@@ -1,0 +1,21 @@
+﻿  Overlapped Server.cpp
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(64,25): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(65,24): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(73,8): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(74,5): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(75,9): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(76,6): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(79,8): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(80,5): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(81,9): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(82,6): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(85,8): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(86,5): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(87,9): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(88,6): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(90,8): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(91,5): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(92,9): error C2065: 'player': 선언되지 않은 식별자입니다.
+C:\Users\82104\source\repos\Game Server - Server\Game Server - Server\Overlapped Server.cpp(93,6): error C2065: 'player': 선언되지 않은 식별자입니다.
+  Server1.cpp
+  코드를 생성하고 있습니다...
