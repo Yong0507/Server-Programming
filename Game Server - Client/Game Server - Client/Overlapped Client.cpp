@@ -75,7 +75,7 @@ typedef struct Player
 {
     int width;
     int height;
-    char num;
+    int num;
 } Player;
 #pragma pack()
 
@@ -127,30 +127,30 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
         switch (wParam)
         {
         case VK_LEFT:
-            player.num = 'a';
+            player.num = 1;
             wsabuf.buf = (char*)&player;
             wsabuf.len = sizeof(player);
+            WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
             break;
         case VK_RIGHT:
-            player.num = 'd';
+            player.num = 2;
             wsabuf.buf = (char*)&player;
             wsabuf.len = sizeof(player);
+            WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
             break;
         case VK_DOWN:
-            player.num = 's';
+            player.num = 3;
             wsabuf.buf = (char*)&player;
             wsabuf.len = sizeof(player);
+            WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
             break;
         case VK_UP:
-            player.num = 'w';
+            player.num = 4;
             wsabuf.buf = (char*)&player;
             wsabuf.len = sizeof(player);
+    		WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
             break;
         } 
-        //send(s_socket, (char*)&player, sizeof(Player), 0);
-
-        //recv(s_socket, (char*)&player, BUF_SIZE, 0);
-		WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
 
         WSARecv(s_socket, &wsabuf, 1, &num_recv, &flag, NULL, NULL);
     

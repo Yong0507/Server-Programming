@@ -26,7 +26,7 @@ typedef struct Player
 {
 	int width;
 	int height;
-	char num;
+	int num;
 } Player;
 #pragma pack()
 
@@ -48,26 +48,24 @@ void CALLBACK send_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overla
 
 void CALLBACK recv_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overlapped, DWORD flags)
 {
-	if (player.num == 'a') {
+	if (player.num == 1) {
 		player.width -= 50;
 		if (player.width < 0)
 			player.width = 0;
-		cout << player.num << endl;
 	}
 
-	if (player.num == 'd') {
+	if (player.num == 2) {
 		player.width += 50;
 		if (player.width > 350)
 			player.width = 350;
-		cout << player.num << endl;
 	}
 
-	if (player.num == 's') {
+	if (player.num == 3) {
 		player.height += 50;
 		if (player.height > 350)
 			player.height = 350;
 	}
-	if (player.num == 'w') {
+	if (player.num == 4) {
 		player.height -= 50;
 		if (player.height < 0)
 			player.height = 0;
@@ -81,8 +79,13 @@ void CALLBACK recv_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overla
 		clients.erase(c_socket);
 		return;
 	}
-//	clients[c_socket].player[dataBytes] = { 0 };
+
+
 	clients[c_socket].dataBuffer.len = dataBytes;
+
+	cout << "From client DataBuffer Len : " << clients[c_socket].dataBuffer.len << endl;
+	cout << "From client DataBuffer Buf : " << clients[c_socket].dataBuffer.buf << endl;
+	
 	memset(&(clients[c_socket].overlapped), 0, sizeof(WSAOVERLAPPED));
 	clients[c_socket].overlapped.hEvent = (HANDLE)c_socket;
 	WSASend(c_socket, &(clients[c_socket].dataBuffer), 1, &dataBytes, 0, &(clients[c_socket].overlapped), send_callback);
@@ -90,7 +93,6 @@ void CALLBACK recv_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overla
 
 void CALLBACK send_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overlapped, DWORD flags)
 {
-
 
 	DWORD receiveBytes = 0;
 	
@@ -108,6 +110,7 @@ void CALLBACK send_callback(DWORD Error, DWORD dataBytes, LPWSAOVERLAPPED overla
 	memset(&(clients[c_socket].overlapped), 0, sizeof(WSAOVERLAPPED));
 	clients[c_socket].overlapped.hEvent = (HANDLE)c_socket;
 	WSARecv(c_socket, &clients[c_socket].dataBuffer, 1, 0, &flags, &(clients[c_socket].overlapped), recv_callback);
+
 }
 
 
