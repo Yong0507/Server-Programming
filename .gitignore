@@ -103,6 +103,15 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,c,c++
 
-# Server 
+# Another
 
 *.ipch
+*.tlog
+*.suo
+*.db
+*.vcxproj
+*.filters
+*.obj
+*.idb
+*.pdb
+*.ilk

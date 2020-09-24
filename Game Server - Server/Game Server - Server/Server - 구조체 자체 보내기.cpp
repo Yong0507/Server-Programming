@@ -24,7 +24,7 @@
 //{
 //	int width;
 //	int height;
-//	int test;
+//	char num;
 //} Player;
 //#pragma pack()
 //
@@ -67,30 +67,31 @@
 //
 //			recv(c_socket, (char*)&player, sizeof(Player), 0);
 //
-//			if (player.test == 1) {
+//			if (player.num == 'a') {
 //				player.width -= 50;
 //				if (player.width < 0)
 //					player.width = 0;
 //			}
 //
-//			if (player.test == 2) {
+//			if (player.num =='d') {
 //				player.width += 50;
 //				if (player.width > 350)
 //					player.width = 350;
 //			}
 //
-//			if (player.test == 3) {
+//			if (player.num == 's') {
 //				player.height += 50;
 //				if (player.height > 350)
 //					player.height = 350;
 //			}
-//			if (player.test == 4) {
+//			if (player.num == 'w') {
 //				player.height -= 50;
 //				if (player.height < 0)
 //					player.height = 0;
 //			}
 //
 //			send(c_socket, (char*)&player, sizeof(Player), 0);
+//
 //		}
 //		cout << "Client connection closed.\n";
 //	}

@@ -75,18 +75,9 @@ typedef struct Player
 {
     int width;
     int height;
-    int test;
+    char num;
 } Player;
 #pragma pack()
-
-struct SOCKETINFO
-{
-    WSAOVERLAPPED overlapped;
-    WSABUF dataBuffer;
-    int receiveBytes;
-    int sendBytes;
-};
-
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -104,15 +95,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     static WSADATA WSAData;
     static SOCKET s_socket;
     static SOCKADDR_IN server_a;
-    memset(&server_a, 0, sizeof(server_a));
 
     static DWORD flag;
     static DWORD num_sent;
     static DWORD num_recv;
     static WSABUF wsabuf;
-    static char buff[BUF_SIZE + 1];
 
-    static SOCKETINFO* socketInfo;
     //static DWORD sendBytes;
     //static DWORD receiveBytes;
     static int sendBytes;
@@ -122,75 +110,53 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
         WSAStartup(MAKEWORD(2, 0), &WSAData);
         // 1. 소켓 생성
-        s_socket = WSASocketW(AF_INET, SOCK_STREAM, 0, NULL, 0, WSA_FLAG_OVERLAPPED); // 소켓 만들기
+        s_socket = WSASocketW(AF_INET, SOCK_STREAM, 0, NULL, 0, 0); // 소켓 만들기
+
+        memset(&server_a, 0, sizeof(SOCKADDR_IN));
 
         // 서버정보 객체설정
         server_a.sin_family = AF_INET;
         server_a.sin_port = htons(PORT);  // host to netwrok 앤디안을 맞춰서
         inet_pton(AF_INET, SERVER_ADDR, &server_a.sin_addr);
         // 2. 연결 요청
-        WSAConnect(s_socket, (sockaddr*)&server_a, sizeof(server_a), NULL, NULL, NULL, NULL);
+        WSAConnect(s_socket, (struct sockaddr*)&server_a, sizeof(server_a), NULL, NULL, NULL, NULL);
         break;
 
     case WM_KEYDOWN:
+    
         switch (wParam)
         {
         case VK_LEFT:
-            // 서버에 보내게 될 데이터 구조체 wsabuf에 저장 
-            player.test = 1;
+            player.num = 'a';
             wsabuf.buf = (char*)&player;
             wsabuf.len = sizeof(player);
-
-            //WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
-            //cout << "Sent " << wsabuf.len << "Bytes [" << buff << " ]\n";
-
             break;
         case VK_RIGHT:
-            player.test = 2;
-            //wsabuf.buf = (char*)&player;
-            //wsabuf.len = sizeof(player);
-            //WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
-            //cout << "Sent " << wsabuf.len << "Bytes [" << buff << " ]\n";
-
+            player.num = 'd';
+            wsabuf.buf = (char*)&player;
+            wsabuf.len = sizeof(player);
             break;
         case VK_DOWN:
-            player.test = 3;
-            //wsabuf.buf = (char*)&player;
-            //wsabuf.len = sizeof(Player);
-            //WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
-            //cout << "Sent " << wsabuf.len << "Bytes [" << buff << " ]\n";
-
+            player.num = 's';
+            wsabuf.buf = (char*)&player;
+            wsabuf.len = sizeof(player);
             break;
         case VK_UP:
-            player.test = 4;
-            //wsabuf.buf = (char*)&player;
-            //wsabuf.len = sizeof(Player);
-            //WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
-            //cout << "Sent " << wsabuf.len << "Bytes [" << buff << " ]\n";
-
+            player.num = 'w';
+            wsabuf.buf = (char*)&player;
+            wsabuf.len = sizeof(player);
             break;
-        }
+        } 
+        //send(s_socket, (char*)&player, sizeof(Player), 0);
 
-        socketInfo = (struct SOCKETINFO*)malloc(sizeof(struct SOCKETINFO));
-        memset((void*)socketInfo, 0x00, sizeof(struct SOCKETINFO));
-        socketInfo->dataBuffer.len = sizeof(Player);
-        socketInfo->dataBuffer.buf = (char*)&player;
+        //recv(s_socket, (char*)&player, BUF_SIZE, 0);
+		WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
 
-        // 3-1 데이터 쓰기
-        sendBytes = send(s_socket, (char*)&player, sizeof(Player), 0);
-        if (sendBytes > 0) {
-            cout << (char*)&player << endl;
-            cout << sizeof(Player) << "Bytes" << endl;
-            receiveBytes = recv(s_socket, (char*)&player, sizeof(Player), sendBytes);
-            if (receiveBytes > 0)
-            {
-                cout << (char*)&player << endl;
-                cout << receiveBytes << "Bytes" << endl;
-            }
-        }
-
-        InvalidateRect(hWnd, NULL, TRUE); // FALSE로 하면 이어짐
+        WSARecv(s_socket, &wsabuf, 1, &num_recv, &flag, NULL, NULL);
+    
+        InvalidateRect(hWnd, NULL, TRUE); // FALSE로 하면 이어짐  
         break;
+
     case WM_PAINT:
         hdc = BeginPaint(hWnd, &ps);
 

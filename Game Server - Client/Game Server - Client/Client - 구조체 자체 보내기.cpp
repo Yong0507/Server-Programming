@@ -77,7 +77,7 @@
 //{
 //    int width;
 //    int height;
-//    int test;
+//    char num;
 //} Player;
 //#pragma pack()
 //
@@ -113,19 +113,19 @@
 //        switch (wParam)
 //        {
 //        case VK_LEFT:
-//            player.test = 1;
+//            player.num = 'a';
 //            send(s_socket, (char*)&player, sizeof(Player), 0);
 //            break;
 //        case VK_RIGHT:
-//            player.test = 2;
+//            player.num = 'd';
 //            send(s_socket, (char*)&player, sizeof(Player), 0);
 //            break;
 //        case VK_DOWN:
-//            player.test = 3;
+//            player.num = 's';
 //            send(s_socket, (char*)&player, sizeof(Player), 0);
 //            break;
 //        case VK_UP:
-//            player.test = 4;
+//            player.num = 'w';
 //            send(s_socket, (char*)&player, sizeof(Player), 0);
 //            break;
 //        }
