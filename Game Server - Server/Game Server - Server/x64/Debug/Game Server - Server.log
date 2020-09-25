@@ -1,6 +1,2 @@
-﻿  Overlapped Server.cpp
-C:\Users\82104\Desktop\Game Server\Server-Programming\Game Server - Server\Game Server - Server\Overlapped Server.cpp(74,60): warning C4311: 'reinterpret_cast': 'HANDLE'에서 'int'(으)로 포인터가 잘립니다.
-C:\Users\82104\Desktop\Game Server\Server-Programming\Game Server - Server\Game Server - Server\Overlapped Server.cpp(74,60): warning C4302: 'reinterpret_cast': 'HANDLE'에서 'int'(으)로 잘립니다.
-C:\Users\82104\Desktop\Game Server\Server-Programming\Game Server - Server\Game Server - Server\Overlapped Server.cpp(101,60): warning C4311: 'reinterpret_cast': 'HANDLE'에서 'int'(으)로 포인터가 잘립니다.
-C:\Users\82104\Desktop\Game Server\Server-Programming\Game Server - Server\Game Server - Server\Overlapped Server.cpp(101,60): warning C4302: 'reinterpret_cast': 'HANDLE'에서 'int'(으)로 잘립니다.
+﻿  소스.cpp
   Game Server - Server.vcxproj -> C:\Users\82104\Desktop\Game Server\Server-Programming\Game Server - Server\x64\Debug\Game Server - Server.exe
