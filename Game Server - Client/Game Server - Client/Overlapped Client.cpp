@@ -7,6 +7,7 @@
 //#include <time.h>
 //#include <string.h>
 //#include <conio.h>
+//#include "protocol.h"
 //using namespace std;
 //
 //#pragma comment (lib,"WS2_32.LIB")
@@ -61,7 +62,7 @@
 //
 //    ShowWindow(hWnd, nCmdShow);
 //    UpdateWindow(hWnd);
-//
+//    
 //
 //    while (GetMessage(&Message, 0, 0, 0)) {
 //        TranslateMessage(&Message);
@@ -108,6 +109,7 @@
 //    switch (iMessage)
 //    {
 //    case WM_CREATE:
+//        
 //        WSAStartup(MAKEWORD(2, 0), &WSAData);
 //        // 1. 家南 积己
 //        s_socket = WSASocketW(AF_INET, SOCK_STREAM, 0, NULL, 0, 0); // 家南 父甸扁
@@ -120,8 +122,10 @@
 //        inet_pton(AF_INET, SERVER_ADDR, &server_a.sin_addr);
 //        // 2. 楷搬 夸没
 //        WSAConnect(s_socket, (struct sockaddr*)&server_a, sizeof(server_a), NULL, NULL, NULL, NULL);
-//        break;
 //
+//
+//        break;
+//   
 //    case WM_KEYDOWN:
 //    
 //        switch (wParam)
@@ -148,7 +152,7 @@
 //            player.num = 4;
 //            wsabuf.buf = (char*)&player;
 //            wsabuf.len = sizeof(player);
-//    		WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
+//    		  WSASend(s_socket, &wsabuf, 1, &num_sent, 0, NULL, NULL);
 //            break;
 //        } 
 //

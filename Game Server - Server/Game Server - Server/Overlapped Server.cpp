@@ -87,7 +87,7 @@
 //	clients[c_socket].overlapped.hEvent = (HANDLE)c_socket;
 //
 //	WSASend(c_socket, &(clients[c_socket].dataBuffer), 1, NULL, 0, &(clients[c_socket].overlapped), send_callback);
-//
+//	
 //	cout << "Send to client DataBuffer Len : " << clients[c_socket].dataBuffer.len << endl;
 //	cout << "Send to client DataBuffer Buf : " << &clients[c_socket].dataBuffer.buf << endl;
 //
